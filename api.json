@@ -6,7 +6,7 @@
         "description": "An API to create and interact with address data"
     },
     "host": "localhost:3000",
-    "basePath": "/address",
+    "basePath": "/",
     "schemes": [
         "http"
     ],
@@ -168,10 +168,12 @@
                             "type": "string"
                         },
                         "dateCreated": {
-                            "type": "string"
+                            "type": "string",
+                            "format": "date-time"
                         },
                         "dateUpdated": {
-                            "type": "string"
+                            "type": "string",
+                            "format": "date-time"
                         }
                     },
                     "required": [

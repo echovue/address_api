@@ -1,0 +1,189 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "Address",
+        "description": "An API to create and interact with address data"
+    },
+    "host": "localhost:3000",
+    "basePath": "/address",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/address/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "operationId": "GET-address",
+                "summary": "Get Address",
+                "tags": [
+                    "Addresses"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/address-output"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "PUT-address",
+                "summary": "Update Address",
+                "tags": [
+                    "Addresses"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/address-input"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/address-output"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "DELETE-address",
+                "summary": "Delete Address",
+                "tags": [
+                    "Addresses"
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/address": {
+            "get": {
+                "operationId": "LIST-addresses",
+                "summary": "List Addresses",
+                "tags": [
+                    "Addresses"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/address-output"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "POST-address",
+                "summary": "Create Address",
+                "tags": [
+                    "Addresses"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/address-input"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/address-output"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "address-input": {
+            "title": "Address Input",
+            "type": "object",
+            "properties": {
+                "address1": {
+                    "type": "string"
+                },
+                "address2": {
+                    "type": "string"
+                },
+                "address3": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zipcode": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "address1",
+                "city",
+                "state",
+                "zipcode",
+                "country"
+            ]
+        },
+        "address-output": {
+            "title": "Address Output",
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "dateCreated": {
+                            "type": "string"
+                        },
+                        "dateUpdated": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "dateCreated"
+                    ]
+                },
+                {
+                    "$ref": "#/definitions/address-input"
+                }
+            ]
+        }
+    }
+}   
+
